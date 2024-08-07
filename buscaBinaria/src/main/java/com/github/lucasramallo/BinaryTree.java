@@ -88,6 +88,26 @@ public class BinaryTree {
         removeLast(node.getRight(), parentNode.getRight());
     }
 
+    public boolean search(int value) {
+        return search(root, value);
+    }
+
+    private boolean search(Node node, int value) {
+        if(node == null) {
+            return false;
+        }
+
+        if(node.getValue() == value) {
+            return true;
+        }
+
+        if(value < node.getValue()) {
+            return search(node.getLeft(), value);
+        }
+
+        return search(node.getRight(), value);
+    }
+
     public Node getRoot() {
         return root;
     }

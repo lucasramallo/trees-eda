@@ -31,12 +31,7 @@ public class Main {
         binaryTree.add(82);
         binaryTree.add(32);
 
-
-        Printer.printTree(binaryTree);
-        System.out.println();
-
-        binaryTree.removeFirst();
-        binaryTree.removeLast();
+        System.out.println(binaryTree.search(32));
         Printer.printTree(binaryTree);
     }
 }
