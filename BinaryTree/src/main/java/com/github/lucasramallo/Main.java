@@ -13,10 +13,16 @@ public class Main {
         binaryTree.add(10);
         binaryTree.add(11);
         binaryTree.add(9);
+        binaryTree.add(6);
+        binaryTree.add(1);
+        binaryTree.add(10);
 
 
-        binaryTree.printTree();
+        Printer.printTree(binaryTree);
+        System.out.println();
 
+//        binaryTree.removeFirst();
+        binaryTree.removeLast();
         Printer.printTree(binaryTree);
     }
 }

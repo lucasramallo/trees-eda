@@ -14,22 +14,68 @@ public class BinaryTree {
         addNode(node, root);
     }
 
-    private void addNode(Node nodeToAdd, Node baseNode) {
-        if(nodeToAdd.getValue() < baseNode.getValue()) {
-            if (baseNode.getLeft() == null) {
-                baseNode.setLeft(nodeToAdd);
+    private void addNode(Node nodeToAdd, Node parentNode) {
+        if(nodeToAdd.getValue() < parentNode.getValue()) {
+            if (parentNode.getLeft() == null) {
+                parentNode.setLeft(nodeToAdd);
                 return;
             }
 
-            addNode(nodeToAdd, baseNode.getLeft());
+            addNode(nodeToAdd, parentNode.getLeft());
         } else {
-            if (baseNode.getRight() == null) {
-                baseNode.setRight(nodeToAdd);
+            if (parentNode.getRight() == null) {
+                parentNode.setRight(nodeToAdd);
                 return;
             }
 
-            addNode(nodeToAdd, baseNode.getRight());
+            addNode(nodeToAdd, parentNode.getRight());
         }
+    }
+
+    public void removeFirst() {
+        if(root.getLeft() == null) {
+            root = null;
+            return;
+        }
+
+        removeFirst(root.getLeft(), root);
+    }
+
+    private void removeFirst(Node node, Node parentNode) {
+        if(node.getLeft() == null) {
+            if(node.getRight() == null) {
+                parentNode.setLeft(null);
+                return;
+            }
+
+            parentNode.setLeft(node.getRight());
+            return;
+        }
+
+        removeFirst(node.getLeft(), parentNode.getLeft());
+    }
+
+    public void removeLast() {
+        if(root.getRight() == null) {
+            root = null;
+            return;
+        }
+
+        removeLast(root.getRight(), root);
+    }
+
+    private void removeLast(Node node, Node parentNode) {
+        if(node.getRight() == null) {
+            if(node.getLeft() == null) {
+                parentNode.setRight(null);
+                return;
+            }
+
+            parentNode.setRight(node.getLeft());
+            return;
+        }
+
+        removeLast(node.getRight(), parentNode.getRight());
     }
 
     public Node getRoot() {
